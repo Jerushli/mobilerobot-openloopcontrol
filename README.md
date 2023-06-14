@@ -9,25 +9,25 @@ To develop a python control code to move the mobilerobot along the predefined pa
 
 ## Procedure
 
-Step1:
+### Step1: 
 
-<br/>
+Use from robomaster import robot.
 
-Step2:
+### Step2:
 
-<br/>
+Choose the x,y,z - axis movement distance(meters).
 
-Step3:
+### Step3:
 
-<br/>
+Give ep_chassis.move to move straight.
 
-Step4:
+### Step4:
 
-<br/>
+Give time.sleep() for a break.
 
-Step5:
+### Step5:
 
-<br/>
+Give ep_chassis.drive_speed to have a circular movement.
 
 ## Program
 ```python
@@ -40,8 +40,89 @@ if __name__ == '__main__':
 
     ep_chassis = ep_robot.chassis
 
-    ## Write your code here
+## Write your code here
+        from robomaster import robot
+        import time
+        from robomaster import camera
 
+
+        if name == 'main':
+            ep_robot = robot.Robot()
+            ep_robot.initialize(conn_type="ap")
+
+            ep_chassis = ep_robot.chassis
+            ep_led = ep_robot.led
+            ep_camera = ep_robot.camera
+
+            print("Video streaming started.....")
+            ep_camera.start_video_stream(display=True, resolution = camera.STREAM_360P)
+
+            '''
+            x = x-axis movement distance,( meters) [-5,5]
+            y = y-axis movement distance,( meters) [-5,5]
+            z = rotation about z axis ( degree)[-180,180]
+            xy_speed = xy axis movement speed,( unit meter/second) [0.5,2]
+            '''
+            ep_chassis.move(x=2.8, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=50, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=0.6, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=55, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=0.6, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=62, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=1.5, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=-28, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=1.2, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=30, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=1.3, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=57, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=0.6, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=55, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=1.8, y=0, z=0, xy_speed=1).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=68, xy_speed=0.60).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=102,b=0,effect="on")
+
+            ep_chassis.move(x=0.7, y=0, z=0, xy_speed=0.75).wait_for_completed()
+            ep_led.set_led(comp = "all",r=255,g=100,b=0,effect="on")
+
+            ep_chassis.move(x=0, y=0, z=20, xy_speed=0.60).wait_for_completed()
+            ep_led.set_led(comp = "all",r=0,g=255,b=0,effect="on")
+            time.sleep(4)
+
+
+            ep_camera.stop_video_stream()
+            print("Stopped video streaming.....")
+
+    ep_robot.close()
 
 
     
@@ -52,24 +133,26 @@ if __name__ == '__main__':
 
 ![robo](./img/robomaster.png)
 
-Insert image here
+
+![startpoint](https://github.com/Janarthanan2/mobilerobot-openloopcontrol/assets/119393515/92bfcba3-e931-4a7f-a907-2fef327dfa66)
 
 
-<br/>
-<br/>
-<br/>
-<br/>
+
+
+![244587331-8eef680f-e815-43a8-bbbc-787e913e41a5](https://github.com/Janarthanan2/mobilerobot-openloopcontrol/assets/119393515/9a2b5111-5e5e-4ddf-a1ff-355665d64c73)
+
+
+
+
+
+![endpoint](https://github.com/Janarthanan2/mobilerobot-openloopcontrol/assets/119393515/95d0c385-4656-469a-ac11-f83b1cff9bc4)
 
 ## MobileRobot Movement Video:
 
 Upload your video in Youtube and paste your video-id here
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+https://youtu.be/otz7zJBaYjs
 
-<br/>
-<br/>
-<br/>
-<br/>
 
 ## Result:
 Thus the python program code is developed to move the mobilerobot in the predefined path.
